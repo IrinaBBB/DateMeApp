@@ -10,11 +10,13 @@ import { RegisterComponent } from './register/register.component'
 import { NavComponent } from './nav/nav.component'
 import { FormsModule } from '@angular/forms'
 import { MemberListComponent } from './members/member-list/member-list.component'
-import { MemberDetailComponent } from './members/member-detail/member-detail.component'
 import { ListsComponent } from './lists/lists.component'
 import { MessagesComponent } from './messages/messages.component'
 import { SharedModule } from './_modules/shared.module'
 import { ErrorInterceptor } from './_interceptors/error.interceptor'
+import { JwtInterceptor } from './_interceptors/jwt.interceptor'
+import { MemberCardComponent } from './members/member-card/member-card.component'
+import { MemberDetailComponent } from './members/member-detail/member-detail.component'
 
 @NgModule({
     declarations: [
@@ -23,9 +25,9 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor'
         RegisterComponent,
         NavComponent,
         MemberListComponent,
-        MemberDetailComponent,
         ListsComponent,
         MessagesComponent,
+        MemberCardComponent,
     ],
     imports: [
         BrowserModule,
@@ -37,6 +39,7 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor'
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     ],
     bootstrap: [AppComponent],
 })
