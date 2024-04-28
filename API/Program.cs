@@ -69,6 +69,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 try

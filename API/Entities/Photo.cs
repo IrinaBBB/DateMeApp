@@ -1,7 +1,6 @@
-﻿using API.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API.DTOs
+namespace API.Entities
 {
     [Table("Photos")]
     public class Photo
