@@ -54,7 +54,7 @@ namespace API.Data
         {
             return await _context.Users
                 .Include(x => x.LikedUsers)
-                .FirstOrDefaultAsync(x => x.Id == userId);
+                .FirstOrDefaultAsync(x => x.Id == userId);  
         }
     }
 }

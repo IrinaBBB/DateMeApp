@@ -7,6 +7,7 @@ import { ListsComponent } from './lists/lists.component'
 import { MessagesComponent } from './messages/messages.component'
 import { authGuard } from './_guards/auth.guard'
 import { MemberEditComponent } from './members/member-edit/member-edit.component'
+import { memberDetailedResolver } from './_resolvers/member-details.resolver'
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [authGuard],
         children: [
-            { path: 'members/:username', component: MemberDetailComponent },
+            { path: 'members/:username', component: MemberDetailComponent, resolve: {member: memberDetailedResolver} },
             { path: 'member/edit', component: MemberEditComponent },
             { path: 'lists', component: ListsComponent },
             { path: 'messages', component: MessagesComponent },
